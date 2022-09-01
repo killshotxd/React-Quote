@@ -45,9 +45,47 @@
 }
 
 .title input {
-  background: #151c18;
+  background: #202723;
 }
+
+.title input:hover {
+  background: #202723;
+}
+
 .title input:focus-within {
   border-color: #ff0083 !important;
   outline: none;
+}
+
+select,
+option,
+option:hover,
+textarea {
+  background: #202723 !important;
+}
+
+select:focus-within,
+textarea:focus-within {
+  border-color: #ff0083 !important;
+}
+
+select option {
+  color: #dddd;
+}
+
+select option:hover {
+  background-color: #ff0083 !important;
+}
+
+.form {
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
