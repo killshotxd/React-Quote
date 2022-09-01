@@ -2,11 +2,7 @@
   min-height: 100vh;
   height: 100%;
   width: 100%;
-  background: linear-gradient(
-    115.3deg,
-    rgb(53, 145, 185) 7.4%,
-    rgb(255, 255, 255) 103.1%
-  );
+  background: #1b242e;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,9 +11,10 @@
 }
 
 .form {
-  background-color: #fff;
+  background-color: #151c18;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  color: #ff0083;
   padding: 30px;
   width: fit-content;
   min-width: 380px;
@@ -28,7 +25,7 @@
 }
 
 .smallLink a {
-  color: #fff;
+  color: #ff0083;
   font-weight: bold;
   cursor: pointer;
   font-size: 0.95rem;
@@ -44,7 +41,7 @@
   border: none;
   outline: none;
   padding: 8px 16px;
-  background-color: #10293e;
+  background-color: #9f0b50;
   color: #fff;
   border-radius: 5px;
   width: 100%;
@@ -59,7 +56,7 @@
 }
 
 .form button:hover {
-  background-color: rgb(43, 172, 223);
+  background-color: #ff0083;
   color: #fff;
 }
 
@@ -74,7 +71,7 @@
 .form .error {
   font-size: 0.875rem;
   font-weight: bold;
-  color: #f12929;
+  color: #ff0083;
   width: 100%;
   text-align: center;
 }
@@ -87,7 +84,7 @@
 }
 
 .bottom p a {
-  color: #10293e;
+  color: #ff0083;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;

@@ -1,0 +1,23 @@
+.container {
+  background: #1b242e;
+  color: #ff0083;
+  height: 100vh;
+}
+
+.headerLogo {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  height: 20vh;
+}
+
+.headerBtn {
+  display: flex;
+  gap: 2rem;
+}
