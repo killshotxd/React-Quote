@@ -4,20 +4,13 @@
   height: 100vh;
 }
 
-.headerLogo {
-  font-weight: bold;
-  font-size: 2rem;
-}
-
 .header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1rem;
-  height: 15vh;
+  padding: 2rem;
 }
 
-.headerBtn {
-  display: flex;
-  gap: 2rem;
+.welcome span {
+  color: #ff0083;
 }

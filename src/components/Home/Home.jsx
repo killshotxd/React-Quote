@@ -5,6 +5,7 @@ import React from "react";
 import { ArrowRight } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../Firebase";
+import Body from "../Body/Body";
 import styles from "./Home.module.css";
 const Home = (props) => {
   const isAuth = props.auth ? true : false;
@@ -30,10 +31,10 @@ const Home = (props) => {
               variant="link"
               onClick={handleNextBtnClick}
             >
-              {isAuth ? "Login" : "SignUp"}
+              {isAuth ? "Manage your Quotes" : "SignUp"}
             </Button>
             {isAuth ? (
-              <Button colorScheme="pink" variant="ghost" onClick={handleLogOut}>
+              <Button colorScheme="pink" variant="link" onClick={handleLogOut}>
                 Logout
               </Button>
             ) : (
@@ -43,6 +44,8 @@ const Home = (props) => {
         </div>
 
         {/* Header End */}
+
+        <Body />
       </div>
     </>
   );

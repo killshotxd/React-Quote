@@ -44,7 +44,10 @@ const App = () => {
               <Route path="/signUp" element={<Auth signUp />} />
             </>
           )}
-          <Route path="/account" element={<Account auth={isAuth} />} />
+          <Route
+            path="/account"
+            element={<Account auth={isAuth} userDetails={userDetails} />}
+          />
           <Route path="/" element={<Home auth={isAuth} />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
