@@ -3,7 +3,7 @@ import styles from "./Account.module.css";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../Firebase";
 import { signOut } from "firebase/auth";
-import { Button } from "@chakra-ui/react";
+import { Button, FormLabel, Input } from "@chakra-ui/react";
 
 const Account = (props) => {
   const userDetails = props.userDetails;
@@ -36,6 +36,16 @@ const Account = (props) => {
           <p style={{ cursor: "pointer" }} onClick={handleLogOut}>
             Logout
           </p>
+        </div>
+      </div>
+
+      <div className={styles.body}>
+        <div className={styles.form}>
+          <div className={styles.heading}> Create New Quote </div>
+          <div className={styles.title}>
+            <FormLabel>Title</FormLabel>
+            <Input variant="filled" placeholder="Title for your Quote" />
+          </div>
         </div>
       </div>
     </div>
