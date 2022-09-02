@@ -111,3 +111,22 @@ select option:hover {
 .quoteHeading p:hover {
   color: #621e41;
 }
+
+.quote {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.quote p {
+  width: 25rem;
+}
+
+.quotes {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.Trash:hover {
+  color: #ff0083 !important;
+}

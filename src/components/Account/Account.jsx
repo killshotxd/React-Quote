@@ -50,8 +50,6 @@ const Account = (props) => {
     let tempQuotes = [];
     result.forEach((doc) => tempQuotes.push({ ...doc.data(), pid: doc.id }));
     setQuotes(tempQuotes);
-    console.log(tempQuotes);
-    console.log(quotes);
   };
 
   useEffect(() => {
@@ -177,10 +175,17 @@ const Account = (props) => {
             quotes.length > 0 ? (
               quotes.map((item, index) => (
                 <div className={styles.quote} key={item.title + index}>
-                  <p className={styles.title}>{item.title}</p>
+                  <p className={styles.title}>
+                    {index + 1} - {item.title}
+                  </p>
 
                   <div className={styles.links}>
-                    <Trash onClick={() => handleDeletion(item.pid)} />
+                    <Trash
+                      color="pink"
+                      style={{ cursor: "pointer" }}
+                      className={styles.Trash}
+                      onClick={() => handleDeletion(item.pid)}
+                    />
                   </div>
                 </div>
               ))
