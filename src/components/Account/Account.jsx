@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Account.module.css";
 import { useNavigate } from "react-router-dom";
-import { addQuoteInDb, auth } from "../../Firebase";
+import {
+  addQuoteInDb,
+  auth,
+  deleteQuote,
+  getAllQuotesForUser,
+} from "../../Firebase";
 import { Select, Textarea } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
 import { Button, FormLabel, Input } from "@chakra-ui/react";
+import { Edit2, Trash } from "react-feather";
 
 const Account = (props) => {
   const userDetails = props.userDetails;
   const isAuth = props.auth;
 
   const [submitButtonDisabled, setSetSubmitButtonDisabled] = useState(false);
-
+  const [quotesLoaded, setQuotesLoaded] = useState(false);
+  const [quotes, setQuotes] = useState([]);
   const [values, setValues] = useState({
     name: userDetails.name || "",
     title: userDetails.title || "",
@@ -27,9 +34,39 @@ const Account = (props) => {
 
   const handleSubmission = async () => {
     setSetSubmitButtonDisabled(true);
-    await addQuoteInDb({ ...values });
+    await addQuoteInDb({ ...values, refUser: userDetails.uid });
     setSetSubmitButtonDisabled(false);
     navigate("/");
+  };
+
+  const fetchAllQuotes = async () => {
+    const result = await getAllQuotesForUser(userDetails.uid);
+    if (!result) {
+      setQuotesLoaded(true);
+      return;
+    }
+    setQuotesLoaded(true);
+
+    let tempQuotes = [];
+    result.forEach((doc) => tempQuotes.push({ ...doc.data(), pid: doc.id }));
+    setQuotes(tempQuotes);
+    console.log(tempQuotes);
+    console.log(quotes);
+  };
+
+  useEffect(() => {
+    fetchAllQuotes();
+  }, []);
+
+  const handleDeletion = async (pid) => {
+    await deleteQuote(pid);
+    fetchAllQuotes();
+    toast({
+      title: "Deletion Successful",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const navigate = useNavigate();
@@ -82,6 +119,7 @@ const Account = (props) => {
                   writer: event.target.value,
                 }))
               }
+              readOnly
             />
           </div>
           <div className={styles.title}>
@@ -127,6 +165,31 @@ const Account = (props) => {
             </Button>
             <Button colorScheme="pink">Cancel</Button>
           </div>
+        </div>
+      </div>
+      <div className={styles.quoteContainer}>
+        <div className={styles.quoteHeading}>
+          <p>Your Quotes</p>
+        </div>
+
+        <div className={styles.quotes}>
+          {quotesLoaded ? (
+            quotes.length > 0 ? (
+              quotes.map((item, index) => (
+                <div className={styles.quote} key={item.title + index}>
+                  <p className={styles.title}>{item.title}</p>
+
+                  <div className={styles.links}>
+                    <Trash onClick={() => handleDeletion(item.pid)} />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No projects found</p>
+            )
+          ) : (
+            <p>Loading...............</p>
+          )}
         </div>
       </div>
     </div>

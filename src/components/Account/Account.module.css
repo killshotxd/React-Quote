@@ -89,3 +89,25 @@ select option:hover {
   justify-content: center;
   gap: 2rem;
 }
+
+.quoteContainer {
+  background: #1b242e;
+  color: #dddd;
+  height: 100vh;
+}
+.quoteHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quoteHeading p {
+  margin-top: 3rem;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ff0083;
+}
+
+.quoteHeading p:hover {
+  color: #621e41;
+}

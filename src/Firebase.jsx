@@ -77,6 +77,12 @@ const getAllQuotesForUser = async (uid) => {
   return await getDocs(dbQuery);
 };
 
+// -----------Delete Projects-------------
+const deleteQuote = async (pid) => {
+  const docRef = doc(db, "quotes", pid);
+  await deleteDoc(docRef);
+};
+
 export {
   auth,
   db,
@@ -85,4 +91,5 @@ export {
   addQuoteInDb,
   getUserFromDb,
   getAllQuotesForUser,
+  deleteQuote,
 };
