@@ -59,4 +59,30 @@ const getUserFromDb = async (uid) => {
   return result.data();
 };
 
-export { auth, db, storage, updateUserDb, getUserFromDb };
+// ----------ADD QUote in DB-----------------
+
+const addQuoteInDb = async (quote) => {
+  if (typeof quote !== "object") return;
+  const collectionRef = collection(db, "quotes");
+  await addDoc(collectionRef, { ...quote });
+};
+
+// ---------------Fetch all Quote-------------
+const getAllQuotesForUser = async (uid) => {
+  if (!uid) return;
+  const collectionRef = collection(db, "quotes");
+  const condition = where("refUser", "==", uid);
+  const dbQuery = query(collectionRef, condition);
+
+  return await getDocs(dbQuery);
+};
+
+export {
+  auth,
+  db,
+  storage,
+  updateUserDb,
+  addQuoteInDb,
+  getUserFromDb,
+  getAllQuotesForUser,
+};

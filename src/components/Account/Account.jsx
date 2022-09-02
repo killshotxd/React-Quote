@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Account.module.css";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../Firebase";
+import { addQuoteInDb, auth } from "../../Firebase";
 import { Select, Textarea } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
 import { Button, FormLabel, Input } from "@chakra-ui/react";
@@ -10,12 +10,25 @@ const Account = (props) => {
   const userDetails = props.userDetails;
   const isAuth = props.auth;
 
-  const [userProfileValues, setUserProfileValues] = useState({
+  const [submitButtonDisabled, setSetSubmitButtonDisabled] = useState(false);
+
+  const [values, setValues] = useState({
     name: userDetails.name || "",
+    title: userDetails.title || "",
+    writer: userDetails.name || "",
+    description: userDetails.description || "",
+    categories: userDetails.categories || "",
   });
 
   const handleLogOut = async () => {
     await signOut(auth);
+    navigate("/");
+  };
+
+  const handleSubmission = async () => {
+    setSetSubmitButtonDisabled(true);
+    await addQuoteInDb({ ...values });
+    setSetSubmitButtonDisabled(false);
     navigate("/");
   };
 
@@ -45,17 +58,44 @@ const Account = (props) => {
           <div className={styles.heading}> Create New Quote </div>
           <div className={styles.title}>
             <FormLabel>Title</FormLabel>
-            <Input variant="filled" placeholder="Title for your Quote" />
+            <Input
+              value={values.title}
+              variant="filled"
+              placeholder="Title for your Quote"
+              onChange={(event) =>
+                setValues((prev) => ({
+                  ...prev,
+                  title: event.target.value,
+                }))
+              }
+            />
           </div>
           <div className={styles.title}>
             <FormLabel>Written By</FormLabel>
-            <Input variant="filled" placeholder="Name..." />
+            <Input
+              value={values.writer}
+              variant="filled"
+              placeholder="Name..."
+              onChange={(event) =>
+                setValues((prev) => ({
+                  ...prev,
+                  writer: event.target.value,
+                }))
+              }
+            />
           </div>
           <div className={styles.title}>
             <FormLabel>Description</FormLabel>
             <Textarea
               variant="filled"
               placeholder="Enter Your Quote.."
+              value={values.description}
+              onChange={(event) =>
+                setValues((prev) => ({
+                  ...prev,
+                  description: event.target.value,
+                }))
+              }
             ></Textarea>
           </div>
           <div className={styles.title}>
@@ -64,6 +104,13 @@ const Account = (props) => {
               variant="filled"
               className={styles.select}
               placeholder="Select categories"
+              value={values.categories}
+              onChange={(event) =>
+                setValues((prev) => ({
+                  ...prev,
+                  categories: event.target.value,
+                }))
+              }
             >
               <option value="option1">Happy</option>
               <option value="option2">Sad</option>
@@ -71,7 +118,13 @@ const Account = (props) => {
             </Select>
           </div>
           <div className={styles.btn}>
-            <Button colorScheme="pink">Add</Button>
+            <Button
+              onClick={handleSubmission}
+              disabled={submitButtonDisabled}
+              colorScheme="pink"
+            >
+              Add
+            </Button>
             <Button colorScheme="pink">Cancel</Button>
           </div>
         </div>
