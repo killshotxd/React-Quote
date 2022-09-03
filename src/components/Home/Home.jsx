@@ -5,7 +5,6 @@ import React from "react";
 import { ArrowRight } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../Firebase";
-import Body from "../Body/Body";
 import styles from "./Home.module.css";
 const Home = (props) => {
   const isAuth = props.auth ? true : false;
@@ -45,7 +44,9 @@ const Home = (props) => {
 
         {/* Header End */}
 
-        <Body />
+        <div className={styles.bodyContainer}>
+          <p>All Quotes</p>
+        </div>
       </div>
     </>
   );

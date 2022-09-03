@@ -17,6 +17,11 @@
   height: 15vh;
 }
 
+.header h2:hover {
+  color: #ff0083;
+  cursor: pointer;
+}
+
 .headerBtn {
   display: flex;
   gap: 2rem;
