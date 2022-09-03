@@ -125,6 +125,8 @@ select option:hover {
 
 .quote p {
   width: 25rem;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .quotes {
