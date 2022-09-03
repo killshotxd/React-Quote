@@ -67,7 +67,7 @@ const addQuoteInDb = async (quote) => {
   await addDoc(collectionRef, { ...quote });
 };
 
-// ---------------Fetch all Quote-------------
+// ---------------Fetch all Quote For user-------------
 const getAllQuotesForUser = async (uid) => {
   if (!uid) return;
   const collectionRef = collection(db, "quotes");
@@ -77,7 +77,13 @@ const getAllQuotesForUser = async (uid) => {
   return await getDocs(dbQuery);
 };
 
-// -----------Delete Projects-------------
+// ----------Fetch All Quotes ------------
+
+const getAllQuotes = async () => {
+  return await getDocs(collection(db, "quotes"));
+};
+
+// -----------Delete Quotes-------------
 const deleteQuote = async (pid) => {
   const docRef = doc(db, "quotes", pid);
   await deleteDoc(docRef);
@@ -92,4 +98,5 @@ export {
   getUserFromDb,
   getAllQuotesForUser,
   deleteQuote,
+  getAllQuotes,
 };
