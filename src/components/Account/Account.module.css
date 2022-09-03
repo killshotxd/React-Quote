@@ -1,7 +1,7 @@
 .container {
   background: #1b242e;
   color: #dddd;
-  height: 100vh;
+  height: 100%;
 }
 
 .header {
@@ -13,6 +13,12 @@
 
 .welcome span {
   color: #ff0083;
+  font-weight: bold;
+}
+
+.welcome p {
+  font-size: xx-large;
+  font-weight: bold !important;
 }
 
 .body {
@@ -129,4 +135,12 @@ select option:hover {
 
 .Trash:hover {
   color: #ff0083 !important;
+}
+
+.left p:hover {
+  color: #ff0083;
+}
+
+.right p:hover {
+  color: #ff0083;
 }
