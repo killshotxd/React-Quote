@@ -73,7 +73,6 @@ const Home = (props) => {
               quotes.length > 0 ? (
                 quotes.map((item) => (
                   <div className={styles.quoteContainer} key={item.pid}>
-                    <p className={styles.title}>{item.title.toUpperCase()}</p>
                     <p className={styles.name}>
                       <Badge variant="subtle" colorScheme="pink">
                         {item.name}

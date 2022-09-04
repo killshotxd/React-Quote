@@ -39,21 +39,23 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  gap: 10rem;
+  gap: 8rem;
   padding: 2rem;
+  flex-direction: column;
 }
 
 .quoteContainer {
   background: #1b242e;
   min-height: 30vh;
   height: 35vh;
-  width: 25vw;
+  width: 50vw;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   gap: 3rem;
+  text-align: center;
 }
 
 .quoteContainer:hover {
@@ -68,10 +70,33 @@
 
 .name span {
   font-size: 1.3rem !important;
+  margin-top: 1rem;
 }
 
 .desc {
   font-weight: bold;
   font-size: 1.5rem;
   color: #ff0083;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 533px) {
+  .desc {
+    font-size: 1rem;
+  }
+  .name span {
+    font-size: 0.9rem;
+  }
+  .quoteContainer {
+    height: 25vh;
+  }
+}
+
+@media screen and (max-width: 393px) {
+  .name span {
+    font-size: 0.8rem !important;
+  }
+  .headerLogo {
+    font-size: 1rem;
+  }
 }
