@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { ArrowRight } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { auth, getAllQuotes } from "../../Firebase";
+import Loader from "../Loader/Loader";
 // import Body from "../Body/Body";
 import styles from "./Home.module.css";
 const Home = (props) => {
@@ -68,18 +69,26 @@ const Home = (props) => {
 
         {
           <div className={styles.quotesBody}>
-            {quotes.map((item) => (
-              <div className={styles.quoteContainer} key={item.pid}>
-                <p className={styles.title}>{item.title.toUpperCase()}</p>
-                <p className={styles.name}>
-                  <Badge variant="subtle" colorScheme="pink">
-                    {item.name}
-                  </Badge>
-                </p>
+            {quotes && quotesLoaded ? (
+              quotes.length > 0 ? (
+                quotes.map((item) => (
+                  <div className={styles.quoteContainer} key={item.pid}>
+                    <p className={styles.title}>{item.title.toUpperCase()}</p>
+                    <p className={styles.name}>
+                      <Badge variant="subtle" colorScheme="pink">
+                        {item.name}
+                      </Badge>
+                    </p>
 
-                <p className={styles.desc}>{item.description}</p>
-              </div>
-            ))}
+                    <p className={styles.desc}>{item.description}</p>
+                  </div>
+                ))
+              ) : (
+                <p>No Quotes.... Create a new One Now by SignUp !</p>
+              )
+            ) : (
+              <Loader />
+            )}
           </div>
         }
       </div>

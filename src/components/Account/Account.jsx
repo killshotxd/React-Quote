@@ -11,6 +11,7 @@ import { Select, Textarea } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
 import { Button, FormLabel, Input } from "@chakra-ui/react";
 import { Edit2, Trash } from "react-feather";
+import Loader from "../Loader/Loader";
 
 const Account = (props) => {
   const userDetails = props.userDetails;
@@ -184,10 +185,10 @@ const Account = (props) => {
                 </div>
               ))
             ) : (
-              <p>No projects found</p>
+              <p>No Quotes found</p>
             )
           ) : (
-            <p>Loading...............</p>
+            <Loader />
           )}
         </div>
       </div>
