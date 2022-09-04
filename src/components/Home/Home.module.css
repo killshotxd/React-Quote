@@ -10,9 +10,15 @@
   font-size: 2rem;
 }
 
+.headerLogo a {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   padding: 1rem;
   height: 15vh;
@@ -90,6 +96,12 @@
   .quoteContainer {
     height: 25vh;
   }
+  .headerLogo {
+    font-size: 1rem;
+  }
+  .headerBtn {
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 393px) {
@@ -98,5 +110,25 @@
   }
   .headerLogo {
     font-size: 1rem;
+  }
+  .headerBtn {
+    gap: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .name span {
+    font-size: 0.6rem !important;
+  }
+  .headerLogo {
+    font-size: 0.7rem;
+  }
+
+  .headerLogo a svg {
+    height: 18;
+  }
+
+  .headerBtn button {
+    font-size: 0.6rem;
   }
 }

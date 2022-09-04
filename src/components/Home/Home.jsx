@@ -2,7 +2,7 @@ import { Badge, Button } from "@chakra-ui/react";
 import { async } from "@firebase/util";
 import { isSignInWithEmailLink, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { ArrowRight } from "react-feather";
+import { ArrowRight, GitHub } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { auth, getAllQuotes } from "../../Firebase";
 import Loader from "../Loader/Loader";
@@ -48,7 +48,11 @@ const Home = (props) => {
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.headerLogo}>Quoter</h2>
+          <h2 className={styles.headerLogo}>
+            <a href="https://github.com/killshotxd">
+              <GitHub /> Quoter
+            </a>
+          </h2>
           <div className={styles.headerBtn}>
             <Button
               colorScheme="pink"

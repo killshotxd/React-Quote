@@ -132,6 +132,7 @@ select option:hover {
 .quotes {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 2rem;
 }
 
@@ -145,4 +146,16 @@ select option:hover {
 
 .right p:hover {
   color: #ff0083;
+}
+
+@media screen and (max-width: 440px) {
+  .welcome p {
+    font-size: medium;
+  }
+  .quote p {
+    font-size: medium;
+  }
+  .quotes {
+    padding: 2rem;
+  }
 }
