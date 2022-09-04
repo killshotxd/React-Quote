@@ -67,9 +67,9 @@ const Home = (props) => {
         </div>
 
         {
-          <div>
+          <div className={styles.quotesBody}>
             {quotes.map((item) => (
-              <div key={item.pid}>
+              <div className={styles.quoteContainer} key={item.pid}>
                 <p>{item.title}</p>
               </div>
             ))}

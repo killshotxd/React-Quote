@@ -1,7 +1,7 @@
 .container {
   background: #1b242e;
   color: #dddd;
-  height: 100vh;
+  height: 100%;
 }
 
 .headerLogo {
@@ -31,4 +31,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.quotesBody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10rem;
+  padding: 2rem;
+}
+
+.quoteContainer {
+  background: #1b242e;
+  min-height: 30vh;
+  width: 35vw;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.quoteContainer:hover {
+  box-shadow: #ff0083 0px 5px 15px;
 }
