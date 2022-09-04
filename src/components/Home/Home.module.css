@@ -51,7 +51,7 @@
 }
 
 .quoteContainer {
-  background: #1b242e;
+  background: #151c18;
   min-height: 30vh;
   height: 35vh;
   width: 50vw;
@@ -75,8 +75,8 @@
 }
 
 .name span {
-  font-size: 1.3rem !important;
-  margin-top: 1rem;
+  font-size: 1.1rem !important;
+  margin-top: 2rem;
 }
 
 .desc {
