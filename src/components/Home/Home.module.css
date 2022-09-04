@@ -2,6 +2,7 @@
   background: #1b242e;
   color: #dddd;
   height: 100%;
+  min-height: 100vh;
 }
 
 .headerLogo {
@@ -45,10 +46,32 @@
 .quoteContainer {
   background: #1b242e;
   min-height: 30vh;
-  width: 35vw;
+  height: 35vh;
+  width: 25vw;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .quoteContainer:hover {
   box-shadow: #ff0083 0px 5px 15px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.name span {
+  font-size: 1.3rem !important;
+}
+
+.desc {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ff0083;
 }

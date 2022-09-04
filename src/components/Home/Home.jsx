@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Badge, Button } from "@chakra-ui/react";
 import { async } from "@firebase/util";
 import { isSignInWithEmailLink, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
@@ -70,7 +70,14 @@ const Home = (props) => {
           <div className={styles.quotesBody}>
             {quotes.map((item) => (
               <div className={styles.quoteContainer} key={item.pid}>
-                <p>{item.title}</p>
+                <p className={styles.title}>{item.title.toUpperCase()}</p>
+                <p className={styles.name}>
+                  <Badge variant="subtle" colorScheme="pink">
+                    {item.name}
+                  </Badge>
+                </p>
+
+                <p className={styles.desc}>{item.description}</p>
               </div>
             ))}
           </div>
