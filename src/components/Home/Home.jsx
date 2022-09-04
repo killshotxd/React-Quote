@@ -1,11 +1,11 @@
 import { Button } from "@chakra-ui/react";
 import { async } from "@firebase/util";
-import { signOut } from "firebase/auth";
-import React from "react";
+import { isSignInWithEmailLink, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { ArrowRight } from "react-feather";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../Firebase";
-import Body from "../Body/Body";
+import { auth, getAllQuotes } from "../../Firebase";
+// import Body from "../Body/Body";
 import styles from "./Home.module.css";
 const Home = (props) => {
   const isAuth = props.auth ? true : false;
@@ -19,6 +19,29 @@ const Home = (props) => {
   const handleLogOut = async () => {
     await signOut(auth);
   };
+
+  const [quotesLoaded, setQuotesLoaded] = useState(false);
+  const [quotes, setQuotes] = useState([]);
+
+  const fetchAllQuotes = async () => {
+    const result = await getAllQuotes();
+    setQuotesLoaded(true);
+
+    if (!result) {
+      return;
+    }
+    const tempQuotes = [];
+
+    result.forEach((doc) => tempQuotes.push({ ...doc.data(), pid: doc.id }));
+
+    setQuotes(tempQuotes);
+
+    console.log([quotes]);
+  };
+
+  useEffect(() => {
+    fetchAllQuotes();
+  }, []);
 
   return (
     <>
@@ -43,9 +66,15 @@ const Home = (props) => {
           </div>
         </div>
 
-        {/* Header End */}
-
-        <Body />
+        {
+          <div>
+            {quotes.map((item) => (
+              <div key={item.pid}>
+                <p>{item.title}</p>
+              </div>
+            ))}
+          </div>
+        }
       </div>
     </>
   );

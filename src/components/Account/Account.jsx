@@ -59,12 +59,6 @@ const Account = (props) => {
   const handleDeletion = async (pid) => {
     await deleteQuote(pid);
     fetchAllQuotes();
-    toast({
-      title: "Deletion Successful",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
   };
 
   const navigate = useNavigate();
