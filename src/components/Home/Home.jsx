@@ -85,7 +85,7 @@ const Home = (props) => {
 
                     <p className={styles.desc}>{item.description}</p>
 
-                    <p>{item.currDate}</p>
+                    <p className={styles.date}>{item.currDate}</p>
                   </div>
                 ))
               ) : (

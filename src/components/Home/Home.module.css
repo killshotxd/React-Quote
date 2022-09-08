@@ -89,6 +89,10 @@
   height: 12vh;
 }
 
+.date {
+  font-weight: bold;
+}
+
 @media screen and (max-width: 533px) {
   .desc {
     font-size: 1rem;
